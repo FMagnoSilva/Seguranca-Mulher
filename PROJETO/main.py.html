@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">tkinter </span><span class="s0">as </span><span class="s1">tk</span>
+<span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">messagebox</span>
+<span class="s0">import </span><span class="s1">requests</span>
+
+<span class="s0">class </span><span class="s1">SistemaSeguranca:</span>
+    <span class="s0">def </span><span class="s1">__init__(self):</span>
+        <span class="s1">self.janela = tk.Tk()</span>
+        <span class="s1">self.janela.title(</span><span class="s2">&quot;Sistema de d=segurança para mulheres&quot;</span><span class="s1">)</span>
+        <span class="s1">self.janela.geometry(</span><span class="s2">&quot;300x200&quot;</span><span class="s1">)</span>
+
+        <span class="s1">self.botao_emergencia = tk.Button(self.janela</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;BOTÃO DE EMERGÊCIA&quot;</span><span class="s0">, </span><span class="s1">command=self.envia_alerta)</span>
+        <span class="s1">self.botao_emergencia.pack(pady=</span><span class="s3">50</span><span class="s1">)</span>
+
+        <span class="s1">self.label_status = tk.Label(self.janela</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Status: OK&quot;</span><span class="s1">)</span>
+        <span class="s1">self.label_status.pack()</span>
+
+        <span class="s0">def </span><span class="s1">envia_alerta(self):</span>
+            <span class="s4">#Simula a requisição ao sistema naciolnal de segurança</span>
+        <span class="s0">try</span><span class="s1">:</span>
+            <span class="s1">resposta = requests.post(</span><span class="s2">&quot;http://sistema-nacional.com/alerta&quot;</span><span class="s0">, </span><span class="s1">json={</span><span class="s2">&quot;localizacao&quot;</span><span class="s1">: </span><span class="s2">&quot;Latitude, Longitude&quot;</span><span class="s0">, </span><span class="s2">&quot;tipo&quot;</span><span class="s1">: </span><span class="s2">&quot;violência doméstica&quot;</span><span class="s1">})</span>
+            <span class="s0">if </span><span class="s1">resposta.stb atus_code == </span><span class="s3">200</span><span class="s1">:</span>
+                <span class="s1">self.label_status.config](text=</span><span class="s2">&quot;status: Alerta enviado com sucesso!&quot;</span><span class="s1">)</span>
+                <span class="s1">messagebox.showinfo(</span><span class="s2">&quot;Alerta Enviado&quot;</span><span class="s0">, </span><span class="s2">&quot;A polícia militar foi notificada.&quot;</span><span class="s1">)</span>
+            <span class="s0">else</span><span class="s1">:</span>
+                <span class="s1">self.label_status.config(text=</span><span class="s2">&quot;Status: Erro ao enviar alerta.&quot;</span><span class="s1">)</span>
+                <span class="s1">messagebox.showinfo(</span><span class="s2">&quot;Alerta Enviado&quot;</span><span class="s0">, </span><span class="s2">&quot;A polícia militar foi notificada.&quot;</span><span class="s1">)</span>
+        <span class="s0">except </span><span class="s1">Exception </span><span class="s0">as </span><span class="s1">e:</span>
+            <span class="s1">self.label_status.config(text=</span><span class="s2">&quot;Status: Erro ao enviar alerta.&quot;</span><span class="s1">)</span>
+            <span class="s1">messagebox.showinfo(</span><span class="s2">&quot;Erro&quot;</span><span class="s0">, </span><span class="s1">str(e))</span>
+
+            <span class="s0">def </span><span class="s1">run(self):</span>
+                <span class="s1">self.janela.mainloop()</span>
+
+                <span class="s0">if </span><span class="s1">__name__ == </span><span class="s2">&quot;__main__&quot;</span><span class="s1">:</span>
+                    <span class="s1">sistema = SistemaSeguranca()</span>
+                    <span class="s1">sistema.run()</span></pre>
+</body>
+</html>
